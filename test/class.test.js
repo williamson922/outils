@@ -15,7 +15,6 @@ describe('Class API:', function () {
             document.body.removeChild($ele)
         })
     });
-
     describe('#hasClass()', function () {
         let $ele = null
         before(function () {
