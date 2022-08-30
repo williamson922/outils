@@ -4,8 +4,8 @@
  * @param  {Number}  num
  * @return {String} 
  */
- function numToRinggitString(num) {
+ function numToRinggit(num) {
 	return "RM" + num.toFixed(2);
 }
 
-module.exports = numToRinggitString;
+module.exports = numToRinggit;
