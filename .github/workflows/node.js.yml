@@ -43,4 +43,6 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Code Coverage
       uses: codecov/codecov-action@v3 # actions for checking coverage of test code
+      with:
+        files: ./code_coverage/coverage.xml,./code_coverage/e2e-coverage.xml
     
