@@ -6,7 +6,7 @@ describe('Price API:', function () {
   });
 
   describe('#numToSelfDefinedCurrency()', function () {
-    it(`outils.numToSelfDefinedCurrency(10, "USD") should return "RM10.00"`, function () {
+    it(`outils.numToSelfDefinedCurrency(10, "USD") should return "USD10.00"`, function () {
         assert(outils.numToSelfDefinedCurrency(10, "USD") === "USD10.00")
     });
 });
