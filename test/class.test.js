@@ -1,3 +1,4 @@
+//testingnumber2
 describe('Class API:', function () {
     describe('#addClass()', function () {
         let $ele = null
