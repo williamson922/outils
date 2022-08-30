@@ -1,3 +1,4 @@
+//testing
 describe('Array API:', function () {
     describe('#arrayEqual()', function () {
         it(`outils.arrayEqual([0, 2, 3, 4], [1, 2, 3]) should return false`, function () {
