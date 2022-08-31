@@ -28,8 +28,13 @@ jobs:
       uses: actions/setup-node@v3
       with:
         cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
+    - name: npm install, build, and test
+      run: |
+        npm install doctest
+        npm install standard --save-dev
+        npx doctest **/*.js || true #TODO: Add all doctest
+        npm ci
+        npm run build --if-present
       env:
         CI: true
 #     - name: SonarCloud Scan # Action For ensuring the code quality
