@@ -42,10 +42,10 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Run tests and collect coverage
-      run: npm run test
+      run: npm run test --coverage
     - name: Code Coverage
       uses: codecov/codecov-action@v3 # actions for checking coverage of test code
       with:
         files: ./code_coverage/coverage.xml,./code_coverage/e2e-coverage.xml
-        max_report_age: off
+        
     
