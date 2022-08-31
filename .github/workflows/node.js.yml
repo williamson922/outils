@@ -46,6 +46,7 @@ jobs:
     - name: Code Coverage
       uses: codecov/codecov-action@v3 # actions for checking coverage of test code
       with:
+        token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
         files: ./code_coverage/coverage.xml,./code_coverage/e2e-coverage.xml
         path_to_write_report: ./code_coverage/codecov_report.txt
         verbose: true
