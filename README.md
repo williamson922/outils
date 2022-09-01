@@ -6,7 +6,7 @@
 [![LICENSE MIT](https://img.shields.io/npm/l/outils.svg)](https://www.npmjs.com/package/outils) 
 
  
-前端业务代码工具库
+前端业务代码工具库 
 
 > 目的：高效率完成前端业务代码
 
