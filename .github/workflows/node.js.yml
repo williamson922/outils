@@ -45,7 +45,7 @@ jobs:
       with:
           # Additional arguments for the sonarcloud scanner
           args:
-            -Dsonar.github.pullRequest="${{github.event.number}}"
+            -Dsonar.pullrequest.key=${{github.event.number}}
             -Dsonar.projectKey=williamson922_outils
             -Dsonar.organization=williamson922
     - uses: mr-smithers-excellent/docker-build-push@v5
