@@ -7,7 +7,7 @@ on:
     branches: [ "master" ]
   pull_request_target:
     branches: [ "master" ]
-permissions: read-all
+permissions: write-all
 
 jobs:
   build:
