@@ -7,6 +7,7 @@ on:
     branches: [ "master" ]
   pull_request_target:
     branches: [ "master" ]
+permissions: write-all
 
 jobs:
   build:
@@ -27,13 +28,20 @@ jobs:
       uses: actions/setup-node@v3
       with:
         cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - name: SonarCloud Scan # Action For ensuring the code quality
-      uses: sonarsource/sonarcloud-github-action@master
+    - name: npm install, build, and test
+      run: |
+        npm install doctest
+        npm install standard --save-dev
+        npx doctest **/*.js || true #TODO: Add all doctest
+        npm ci
+        npm run build --if-present
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        CI: true
+#     - name: SonarCloud Scan # Action For ensuring the code quality
+#       uses: sonarsource/sonarcloud-github-action@master
+#       env:
+#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     - uses: mr-smithers-excellent/docker-build-push@v5
       name: Build & push Docker image
       with:
@@ -42,10 +50,9 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Run tests and collect coverage
-      run: npm run test --coverage
+      run: npm run test -- --coverage
     - name: Code Coverage
-      uses: codecov/codecov-action@v3 # actions for checking coverage of test code
-      with:
-        files: ./code_coverage/coverage.xml,./code_coverage/e2e-coverage.xml
+      uses: codecov/codecov-action@v3.1.0 # actions for checking coverage of test code
+    
         
     
