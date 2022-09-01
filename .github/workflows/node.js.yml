@@ -7,17 +7,13 @@ on:
     branches: [ "master" ]
   pull_request_target:
     branches: [ "master" ]
+    
 permissions: write-all
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
-
-#     strategy:
-#       matrix:
-#         node-version: [12.x, 14.x, 16.x]
-#         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - uses: actions/checkout@v3
@@ -37,11 +33,6 @@ jobs:
         npm run build --if-present
       env:
         CI: true
-    - name: SonarCloud Scan # Action For ensuring the code quality
-      uses: sonarsource/sonarcloud-github-action@master
-      env:
-        GITHUB_TOKEN: ${{ github.outils_token }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     - uses: mr-smithers-excellent/docker-build-push@v5
       name: Build & push Docker image
       with:
@@ -50,7 +41,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Run tests and collect coverage
-      run: npm run test -- --coverage
+      run: npm run test 
     - name: Code Coverage
       uses: codecov/codecov-action@v3.1.0 # actions for checking coverage of test code
     
