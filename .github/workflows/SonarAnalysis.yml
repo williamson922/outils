@@ -1,3 +1,10 @@
+name: Sonar Cloud Scan
+on:
+  push:
+    branches: [ "master" ]
+  pull_request_target:
+    branches: [ "master" ]
+permissions: write-all
 jobs:
   Analysis:
     runs-on: ubuntu-latest
