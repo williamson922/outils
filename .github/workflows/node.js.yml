@@ -7,7 +7,7 @@ on:
     branches: [ "master" ]
   pull_request_target:
     branches: [ "master" ]
-permissions: write-all
+permissions: read-all|write-all
 
 jobs:
   build:
@@ -40,7 +40,7 @@ jobs:
     - name: SonarCloud Scan # Action For ensuring the code quality
       uses: sonarsource/sonarcloud-github-action@master
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ github.outils_token }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     - uses: mr-smithers-excellent/docker-build-push@v5
       name: Build & push Docker image
