@@ -299,6 +299,15 @@ declare namespace outils {
    */
   export function stringfyQueryString(obj: object): string
 
+   /**
+   * 
+   * @desc   对象序列化
+   * @param  {Number} num
+   * @return {String}
+   */
+  export function numToString(num: number): string
+
+ 
 }
 
 declare module "outils" {
