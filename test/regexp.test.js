@@ -167,16 +167,16 @@ describe('Regexp API:', function () {
 	describe('#isBankCard()', function(){
 		it('outils.isBankCard("1111111111111111") should return true',function(){
 			assert(outils.isBankCard("1111111111111111"))
-		}):
+		});
 		it('outils.isBankCard("1234567891234567") should return true',function(){
 			assert(outils.isBankCard("1234567891234567"))
-		}):
+		});
 		it('outils.isBankCard("123456789123456A") should return false',function(){
 			assert(outils.isBankCard("123456789123456A"))
-		}):
+		});
 		it('outils.isBankCard("12345678912345678") should return false',function(){
 			assert(outils.isBankCard("12345678912345678"))
-		}):
+		});
 	});
 
 
