@@ -172,9 +172,9 @@ describe('Regexp API:', function () {
 			assert(outils.isBankCard("1234567891234567"))
 		});
 		it('outils.isBankCard("123456789123456A") should return false',function(){
-			assert(outils.isBankCard("123456789123456A"))
+			assert(!outils.isBankCard("123456789123456A"))
 		});
 		it('outils.isBankCard("12345678912345678") should return false',function(){
-			assert(outils.isBankCard("12345678912345678"))
+			assert(!outils.isBankCard("12345678912345678"))
 		});
 	});
