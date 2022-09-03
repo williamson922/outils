@@ -46,6 +46,7 @@ jobs:
       with:
           # Additional arguments for the sonarcloud scanner
           args:
+            -Dsonar.branch.name=master
             -Dsonar.pullrequest.key=${{github.event.number}}
             -Dsonar.pullrequest.github.repository=${{ format('{0}/{1}', github.event.pull_request.user.login, github.event.repository.name) }}
             -Dsonar.pullrequest.provider=GitHub
