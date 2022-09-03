@@ -44,7 +44,7 @@ jobs:
       uses: sonarsource/sonarcloud-github-action@master
       if: contains('pull_request_target',github.event_name)
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       with:
           # Additional arguments for the sonarcloud scanner
