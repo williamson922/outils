@@ -47,10 +47,11 @@ jobs:
           # Additional arguments for the sonarcloud scanner
           args:
             -Dsonar.pullrequest.key=${{github.event.number}}
-            -Dsonar.pullrequest.github.repository=${{ format('{0}/{1}', github.event.pull_request.user.login, github.event.repository.name) }}
-            -Dsonar.pullrequest.provider=GitHub
             -Dsonar.pullrequest.branch=${{github.event.pull_request.head.ref}}
             -Dsonar.pullrequest.base=${{github.event.pull_request.base.ref}}
+            -Dsonar.pullrequest.provider=GitHub
+            -Dsonar.pullrequest.github.endpoint=https://github.company.com/api/v3/
+            -Dsonar.pullrequest.github.repository=${{ format('{0}/{1}', github.event.pull_request.user.login, github.event.repository.name) }}
             -Dsonar.projectKey=williamson922_outils
             -Dsonar.organization=williamson922
             
