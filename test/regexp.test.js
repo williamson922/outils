@@ -178,9 +178,3 @@ describe('Regexp API:', function () {
 			assert(outils.isBankCard("12345678912345678"))
 		});
 	});
-
-
-
-
-
-
