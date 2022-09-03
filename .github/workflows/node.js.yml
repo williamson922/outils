@@ -53,7 +53,7 @@ jobs:
             -Dsonar.scm.revision=${{ github.event.pull_request.head.sha }}
             -Dsonar.pullrequest.branch=${{github.event.pull_request.head.ref}}
             -Dsonar.pullrequest.base=${{github.event.pull_request.base.ref}}
-            -Dsonar.pullrequest.provider=GitHub
+            -Dsonar.pullrequest.provider=git
             -Dsonar.pullrequest.github.endpoint=https://github.company.com/api/v3/
             -Dsonar.pullrequest.github.repository=${{ format('{0}/{1}', github.event.pull_request.user.login, github.event.repository.name) }}
             
