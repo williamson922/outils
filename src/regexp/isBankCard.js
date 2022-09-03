@@ -6,7 +6,7 @@
  */
 
 function isBankCard(str){
-    if(isNaN(str) && str.length!==16)
+    if(isNaN(str) && str.length!=16)
         return false;
     else
         return true;
