@@ -5,9 +5,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "**" ]
   pull_request_target:
-    branches: [ "master" ]
+    branches: [ "**" ]
     
 permissions: write-all
 
