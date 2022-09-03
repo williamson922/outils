@@ -75,7 +75,6 @@ describe('Function API:', function () {
     });
     
     describe('#isPrimeNumber', function(){
-
         it(`outils.isPrimeNumber(1, function(){return false}) should return false`, function(){
            assert(outils.isPrimeNumber(1))
         })
