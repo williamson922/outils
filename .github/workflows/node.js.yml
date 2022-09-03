@@ -52,6 +52,7 @@ jobs:
             -Dsonar.pullrequest.provider=GitHub
             -Dsonar.pullrequest.github.endpoint=https://github.company.com/api/v3/
             -Dsonar.pullrequest.github.repository=${{ format('{0}/{1}', github.event.pull_request.user.login, github.event.repository.name) }}
+            -Dsonar.scm.revision=${{ github.event.pull_request.head.sha }}
             -Dsonar.projectKey=williamson922_outils
             -Dsonar.organization=williamson922
             
