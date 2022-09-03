@@ -38,7 +38,7 @@ jobs:
         CI: true
         
     - name: SonarCloud Scan # Action For ensuring the code quality
-      if: github.event_name  == "pull_request_target"
+      if: ${{ github.event_name }} == 'pull_request_target'
       uses: sonarsource/sonarcloud-github-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -48,13 +48,13 @@ jobs:
           args:
             -Dsonar.pullrequest.key=${{github.event.number}}
             -Dsonar.pullrequest.github.repository=williamson922/outils
-            -Dsonar.pullrequest.provider = GitHub
+            -Dsonar.pullrequest.provider=GitHub
             -Dsonar.pullrequest.base=master
             -Dsonar.projectKey=williamson922_outils
             -Dsonar.organization=williamson922
             
     - name: SonarCloud Scan # Action For ensuring the code quality
-      if: github.event_name  == "push"
+      if: ${{ github.event_name }} == 'push'
       uses: sonarsource/sonarcloud-github-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
