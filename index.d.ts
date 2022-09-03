@@ -181,6 +181,14 @@ declare namespace outils {
    * @return {Number} 
    */
   export function randomNum(min: number, max: number): number
+ 
+ /**
+   * 
+   * @desc 
+   * @param  {String}  str
+   * @return {Boolean} 
+   */
+  export function isBankCard(str: string): boolean
 
   /**
    * 
