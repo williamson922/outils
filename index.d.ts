@@ -313,7 +313,7 @@ declare namespace outils {
    * @param  {Number} num
    * @return {String}
    */
-  export function numToString(num: number): string
+  export function numToRinggit(num: number): string
 
  
 }
