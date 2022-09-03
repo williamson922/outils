@@ -76,13 +76,13 @@ describe('Function API:', function () {
     describe('#ODDandEvenNumber', function(){
 
         it(`outils.ODDandEvenNumber(200, function(){return true}) should return true`, function(){
-           assert(outils.ODDandEvenNumber(200))
+           assert(!outils.ODDandEvenNumber(200))
         })
-        it(`outils.ODDandEvenNumber(195, function(){return false}) should return true`, function(){
+        it(`outils.ODDandEvenNumber(195, function(){return false}) should return false`, function(){
             assert(outils.ODDandEvenNumber(195))
          })
          it(`outils.ODDandEvenNumber(186, function(){return true}) should return true`, function(){
-            assert(outils.ODDandEvenNumber(186))
+            assert(!outils.ODDandEvenNumber(186))
          })
     })
 });
