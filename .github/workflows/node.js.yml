@@ -39,7 +39,7 @@ jobs:
         
     - name: SonarCloud Scan PR # Action For ensuring the code quality
       uses: sonarsource/sonarcloud-github-action@master
-      if: ${{ github.event_name }} == 'pull_request_target'
+      if: contains(['pull_request_target'],github.event_name)
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -55,7 +55,7 @@ jobs:
             
     - name: SonarCloud Scan Push # Action For ensuring the code quality
       uses: sonarsource/sonarcloud-github-action@master
-      if: ${{ github.event_name }} == 'push'
+      if: contains(['push'],github.event_name)
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
