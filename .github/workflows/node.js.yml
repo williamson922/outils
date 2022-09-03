@@ -2,11 +2,13 @@
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
 name: Node.js CI
+
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "**" ]
   pull_request_target:
-    branches: [ "master" ]
+    branches: [ "**" ]
+    
 permissions: write-all
 
 jobs:
@@ -14,20 +16,17 @@ jobs:
 
     runs-on: ubuntu-latest
 
-#     strategy:
-#       matrix:
-#         node-version: [12.x, 14.x, 16.x]
-#         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
     - uses: actions/checkout@v3
       with:
         # Disabling shallow clone is recommended for improving relevancy of reporting
         fetch-depth: 0
+        
     - name: Use Node.js 
       uses: actions/setup-node@v3
       with:
         cache: 'npm'
+        
     - name: npm install, build, and test
       run: |
         npm install doctest
@@ -37,26 +36,39 @@ jobs:
         npm run build --if-present
       env:
         CI: true
-    - name: SonarCloud Scan # Action For ensuring the code quality
+    
+    - name: Run tests and collect coverage
+      run: npm run test -- --coverage
+    
+    - name: SonarCloud Scan PR # Action For ensuring the code quality
       uses: sonarsource/sonarcloud-github-action@master
+      if: contains('pull_request_target',github.event_name)
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN_GITHUB }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      with:
+          # Additional arguments for the sonarcloud scanner
+          args:
+            -Dsonar.pullrequest.key=${{github.event.pull_request.number}}
+            -Dsonar.scm.revision=${{ github.event.pull_request.head.sha }}
+            -Dsonar.pullrequest.branch=${{github.event.pull_request.head.ref}}
+            -Dsonar.pullrequest.base=${{github.event.pull_request.base.ref}}
+            -Dsonar.pullrequest.provider=git
+            -Dsonar.pullrequest.github.endpoint=https://github.company.com/api/v3/
+            -Dsonar.pullrequest.github.repository=${{ format('{0}/{1}', github.event.pull_request.user.login, github.event.repository.name) }}
+            
+    - name: SonarCloud Scan Push # Action For ensuring the code quality
+      uses: sonarsource/sonarcloud-github-action@master
+      if: contains('push',github.event_name)
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       with:
           # Additional arguments for the sonarcloud scanner
           args:
-            -Dsonar.pullrequest.key=${{github.event.number}}
             -Dsonar.projectKey=williamson922_outils
             -Dsonar.organization=williamson922
-    - uses: mr-smithers-excellent/docker-build-push@v5
-      name: Build & push Docker image
-      with:
-        image: ${{secrets.DOCKER_USERNAME}}/outils
-        registry: docker.io
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-    - name: Run tests and collect coverage
-      run: npm run test -- --coverage
+             
     - name: Code Coverage
       uses: codecov/codecov-action@v3.1.0 # actions for checking coverage of test code
     
