@@ -164,5 +164,4 @@ describe('Regexp API:', function () {
 			assert(!outils.isUrl("http://baiducom"))
 		});
 	});
-
 });

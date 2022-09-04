@@ -181,6 +181,14 @@ declare namespace outils {
    * @return {Number} 
    */
   export function randomNum(min: number, max: number): number
+ 
+ /**
+   * 
+   * @desc 
+   * @param  {String}  str
+   * @return {Boolean} 
+   */
+  export function isBankCard(str: string): boolean
 
   /**
    * 
@@ -299,6 +307,15 @@ declare namespace outils {
    */
   export function stringfyQueryString(obj: object): string
 
+   /**
+   * 
+   * @desc   对象序列化
+   * @param  {Number} num
+   * @return {String}
+   */
+  export function numToRinggit(num: number): string
+
+ 
 }
 
 declare module "outils" {
