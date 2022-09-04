@@ -74,20 +74,4 @@ describe('Function API:', function () {
         })
     });
 
-    describe('#CheckEvenNumber', function(){
-
-        it(`outils.CheckEvenNumber(200, function(){return true}) should return true`, function(){
-           assert(outils.CheckEvenNumber(200))
-        })
-        it(`outils.CheckEvenNumber(195, function(){return false}) should return false`, function(){
-            assert(!outils.CheckEvenNumber(195))
-         })
-         it(`outils.CheckEvenNumber(186, function(){return true}) should return true`, function(){
-            assert(outils.CheckEvenNumber(186))
-         })
-    })
 });
-
-  });
-
-
