@@ -100,7 +100,3 @@ describe('Function API:', function () {
          })
     })
 });
-
-  });
-
-
