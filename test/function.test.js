@@ -74,6 +74,7 @@ describe('Function API:', function () {
     });
   });
 
+
   describe('#isPrimeNumber', function () {
     it(`outils.isPrimeNumber(1, function(){return false}) should return false`, function () {
       assert(outils.isPrimeNumber(1));
@@ -85,4 +86,21 @@ describe('Function API:', function () {
       assert(outils.isPrimeNumber(35));
     });
   });
+
+    describe('#CheckEvenNumber', function(){
+
+        it(`outils.CheckEvenNumber(200, function(){return true}) should return true`, function(){
+           assert(outils.CheckEvenNumber(200))
+        })
+        it(`outils.CheckEvenNumber(195, function(){return false}) should return false`, function(){
+            assert(!outils.CheckEvenNumber(195))
+         })
+         it(`outils.CheckEvenNumber(186, function(){return true}) should return true`, function(){
+            assert(outils.CheckEvenNumber(186))
+         })
+    })
 });
+
+  });
+
+
