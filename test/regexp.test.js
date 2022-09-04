@@ -132,6 +132,15 @@ describe('Regexp API:', function () {
 		});
 	});
 
+  describe('#isIC()', function () {
+		it('outils.isIC("010203-01-2134") should return true ', function () {
+			assert(outils.isIC("010203-01-2134"))
+		});
+		it('outils.isIdCard("010203-01-2134231") should return false', function () {
+			assert(!outils.isIC("010203-01-2134231"))
+		});
+	});
+
 	describe('#isPhoneNum()', function () {
 		it('outils.isPhoneNum("18882324234") should return true ', function () {
 			assert(outils.isPhoneNum("18882324234"))
