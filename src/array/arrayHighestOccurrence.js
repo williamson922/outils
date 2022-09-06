@@ -25,3 +25,5 @@ function arrayHighestOccurrence(array)
     }
     return maxEl;
 }
+
+module.exports = arrayHighestOccurrence;
