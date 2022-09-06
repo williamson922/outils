@@ -75,17 +75,17 @@ describe('Function API:', function () {
   });
 
 
-  describe('#isPrimeNumber', function () {
-    it(`outils.isPrimeNumber(1, function(){return false}) should return false`, function () {
-      assert(!outils.isPrimeNumber(1));
-    });
-    it(`outils.isPrimeNumber(2, function(){return true}) should return true`, function () {
-      assert(outils.isPrimeNumber(2));
-    });
-    it(`outils.isPrimeNumber(35, function(){return false}) should return false`, function () {
-      assert(!outils.isPrimeNumber(35));
-    });
-  });
+  // describe('#isPrimeNumber', function () {
+  //   it(`outils.isPrimeNumber(1, function(){return false}) should return false`, function () {
+  //     assert(!outils.isPrimeNumber(1));
+  //   });
+  //   it(`outils.isPrimeNumber(2, function(){return true}) should return true`, function () {
+  //     assert(outils.isPrimeNumber(2));
+  //   });
+  //   it(`outils.isPrimeNumber(35, function(){return false}) should return false`, function () {
+  //     assert(!outils.isPrimeNumber(35));
+  //   });
+  // });
 
   describe('#CheckEvenNumber', function () {
     it(`outils.CheckEvenNumber(200, function(){return true}) should return true`, function () {
